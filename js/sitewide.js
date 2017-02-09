@@ -1,7 +1,5 @@
-// 'use strict'; will help you write better code by being less lenient with syntax. Put the as the first line in all your js files.
 'use strict';
       
-// On DOM ready, create a new App. No need to store this to a var. Its more secure this way.         
 $(function(){
 	
 	$('.modal, .close').on('click', function() {
@@ -12,7 +10,6 @@ $(function(){
 		url: "https://www.reddit.com/r/EarthPorn/.json", 
 		success: function(result) {
 			var grid = result.data.children;
-			console.log(grid);
 
 			for (var i = 1; i < grid.length; i++) {
 				var tile = grid[i].data;
@@ -20,9 +17,9 @@ $(function(){
 					'<li>' + 
 						'<a href="#" class="thumb" style="background-image: url('+ tile.thumbnail +')"></a>' +
 						'<div class="info">' +
-							'<a href="https://www.reddit.com/user/' + tile.author + '" class="title">posted by: <span>' + tile.author + '</span></a>' +
+							'<a href="https://www.reddit.com/user/' + tile.author + '" target="_blank" class="title">posted by: <span>' + tile.author + '</span></a>' +
 							'<p>' + cleanTitle(tile.title) + '</p>' +
-							'<a href="https://www.reddit.com' + tile.permalink + '" class="post">go to Reddit post</a>' +
+							'<a href="https://www.reddit.com' + tile.permalink + '" target="_blank" class="post">go to Reddit post</a>' +
 							'<a href="#" data-image="' + tile.preview.images[0].source.url + '" class="full">Full Image</a>' +
 						'</div>' +
 					'</li>'
